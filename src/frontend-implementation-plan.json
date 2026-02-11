@@ -1,111 +1,150 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "ElectroBeez branding, blue/white theme refresh, contact details, and domain setup documentation",
+  "title": "Futuristic single-page landing redesign (white + single-blue accents with subtle ambient motion)",
   "requirements": [
     {
-      "id": "REQ-8",
-      "summary": "Add ElectroBeez logo as the brand mark in header navigation and also display it in the hero and footer sections using static frontend assets.",
+      "id": "REQ-19",
+      "summary": "Fully redesign the single-page landing layout and all sections while keeping existing anchor IDs and content meaning.",
       "acceptanceCriteria": [
-        "The header navigation (frontend/src/components/landing/SectionNav.tsx) shows the ElectroBeez logo in place of the current icon/brand mark.",
-        "The hero section (frontend/src/components/landing/LandingPage.tsx) includes the ElectroBeez logo in a visually prominent, responsive placement.",
-        "The footer section of the landing page includes the ElectroBeez logo (or a compact variant) with appropriate sizing and spacing.",
-        "Logo images are referenced as static assets from the frontend (not served from the backend)."
+        "The site remains a single-page landing experience (no route-based multi-page navigation).",
+        "Top navigation links continue to scroll smoothly to the same anchor IDs: #home, #about, #budget, #benefits, #donate.",
+        "All existing core sections (Hero, Donation, About, Budget, Benefits, Footer) are still present, but their layout/visual structure is fully redesigned."
       ],
       "file_operations": [
         {
-          "path": "frontend/public/assets/generated/electrobeez-logo.dim_512x512.png",
-          "operation": "create",
-          "description": "Add the generated transparent square ElectroBeez logo asset at this exact path so it can be referenced as a static frontend asset."
-        },
-        {
-          "path": "frontend/public/assets/generated/electrobeez-logo-horizontal.dim_1200x300.png",
-          "operation": "create",
-          "description": "Add the generated transparent horizontal ElectroBeez logo lockup asset at this exact path so it can be referenced as a static frontend asset."
-        },
-        {
-          "path": "frontend/public/assets/generated/electrobeez-favicon.dim_64x64.png",
-          "operation": "create",
-          "description": "Add the generated transparent favicon-sized ElectroBeez icon at this exact path so it can be referenced as a static frontend asset."
-        },
-        {
-          "path": "frontend/src/components/landing/SectionNav.tsx",
-          "operation": "modify",
-          "description": "Replace the current Zap icon/brand text with the ElectroBeez logo (prefer the horizontal lockup) using the static asset at frontend/public/assets/generated/electrobeez-logo-horizontal.dim_1200x300.png; ensure responsive sizing and accessible alt text. Verify the component's usage instructions before implementing."
-        },
-        {
           "path": "frontend/src/components/landing/LandingPage.tsx",
           "operation": "modify",
-          "description": "Add the ElectroBeez logo into the hero section (use frontend/public/assets/generated/electrobeez-logo.dim_512x512.png or the horizontal lockup as appropriate) in a prominent, responsive placement; add the logo into the landing page footer area as well. Verify the component's usage instructions before implementing."
+          "description": "Refactor the landing page into a new futuristic long-scroll layout while preserving the exact section anchor IDs (#home, #about, #budget, #benefits, #donate) and keeping all existing content meaning/details (donation/bank details, contact details, directors list) intact; restructure sections into a modern layout and wire in any newly created section components. Use shadcn-ui surfaces (e.g., Card/Button) for consistent high-end styling. Verify the component's usage instructions before implementing."
         },
         {
-          "path": "frontend/index.html",
-          "operation": "modify",
-          "description": "Update the app favicon reference to use the generated asset at frontend/public/assets/generated/electrobeez-favicon.dim_64x64.png."
+          "path": "frontend/src/components/landing/sections/HeroSection.tsx",
+          "operation": "create",
+          "description": "Create a redesigned Hero section component (still renders as <section id=\"home\"> in LandingPage) with a futuristic/professional structure (e.g., improved hierarchy, feature highlights, CTA grouping) while keeping existing hero message meaning and keeping CTA links pointing to existing anchors. Use shadcn-ui components where appropriate. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/landing/sections/DonationSection.tsx",
+          "operation": "create",
+          "description": "Create a redesigned Donation section component (still renders as <section id=\"donate\">) that re-lays out the QR + bank transfer details into a more premium card/grid presentation without changing any donation/bank details content. Use shadcn-ui Card/Button for surfaces and CTAs. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/landing/sections/AboutSection.tsx",
+          "operation": "create",
+          "description": "Create a redesigned About section component (still renders as <section id=\"about\">) with a modern split layout and improved information architecture while preserving existing meaning and bullet content. Use shadcn-ui Card for feature panels. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/landing/sections/BudgetSection.tsx",
+          "operation": "create",
+          "description": "Create a redesigned Budget section component (still renders as <section id=\"budget\">) with an updated futuristic layout (e.g., structured breakdown cards + total callout) while preserving all budget values and text meaning. Use shadcn-ui Card/Button. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/landing/sections/BenefitsSection.tsx",
+          "operation": "create",
+          "description": "Create a redesigned Benefits section component (still renders as <section id=\"benefits\">) with a premium grid and improved micro-interactions while preserving the same benefits content meaning. Use shadcn-ui Card for benefit tiles. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/landing/sections/FooterSection.tsx",
+          "operation": "create",
+          "description": "Create a redesigned Footer section component (no new routes) that keeps existing contact info and any existing footer content meaning, but updates layout/typography to match the new futuristic theme. Use shadcn-ui components if beneficial. Verify the component's usage instructions before implementing."
         }
       ]
     },
     {
-      "id": "REQ-9",
-      "summary": "Switch the entire site theme to a professional blue-and-white palette by updating global theme tokens and refactoring landing page styling to avoid monochrome hard-coded utilities.",
+      "id": "REQ-20",
+      "summary": "Enforce a white light-mode background and cohesive futuristic/professional styling across the landing page.",
       "acceptanceCriteria": [
-        "Global theme tokens in frontend/src/index.css are updated from monochrome neutrals to a blue-and-white palette for both :root and .dark variables (background/foreground/primary/secondary/accent/border/ring/etc).",
-        "Hard-coded monochrome utility styling in landing components (e.g., zinc/black gradients and text colors in frontend/src/components/landing/LandingPage.tsx and frontend/src/components/landing/SectionNav.tsx) is refactored so the UI consistently reflects the blue-and-white theme.",
-        "Primary call-to-action buttons and key accents use the new blue primary color (and remain accessible with sufficient contrast).",
-        "No section reverts to the old monochrome look after the change (hero, donate, about, budget, benefits, navigation, footer)."
+        "In light mode, the main page background renders as white (no tinted page-wide background fill).",
+        "Sections that use gradients do not remove the overall white-background feel (gradients must be subtle overlays, not solid tinted section fills).",
+        "Typography, spacing, and component styling look cohesive and intentionally 'futuristic/professional' across the entire page."
       ],
       "file_operations": [
         {
           "path": "frontend/src/index.css",
           "operation": "modify",
-          "description": "Replace the current monochrome OKLCH variable set with a blue-and-white palette for both light (:root) and dark (.dark) modes, covering background/foreground/card/popover/primary/secondary/muted/accent/destructive/border/input/ring/chart tokens."
-        },
-        {
-          "path": "frontend/src/components/landing/SectionNav.tsx",
-          "operation": "modify",
-          "description": "Refactor navigation styles to use theme tokens (e.g., bg-background, text-foreground, border-border, and primary accents) instead of zinc/black hard-coded classes; ensure CTA button uses the new primary blue styling consistently. Verify the component's usage instructions before implementing."
+          "description": "Adjust global theme variables and base styles so light mode reads as true white page background and a clean high-end look (ensure body/main background is white), and ensure any gradient usage is subtle overlay rather than solid tinted fills; keep typography/spacing cohesive across the page and avoid page-wide tinted backgrounds."
         },
         {
           "path": "frontend/src/components/landing/LandingPage.tsx",
           "operation": "modify",
-          "description": "Refactor hero, donate, about, budget, benefits, and footer section styling to remove hard-coded zinc/black gradients and text colors, aligning all sections with the updated blue-and-white theme tokens and accessible contrast. Verify the component's usage instructions before implementing."
+          "description": "Update section background treatments to maintain an overall white-background feel (prefer subtle overlays, borders, and shadow depth over large tinted fills) while keeping the page futuristic/professional and readable; ensure all user-facing text remains English."
         }
       ]
     },
     {
-      "id": "REQ-10",
-      "summary": "Add ElectroBeez contact email and phone number to the landing page (at minimum in the footer) with clickable mailto and tel links and theme-consistent styling.",
+      "id": "REQ-21",
+      "summary": "Constrain accents to a single consistent blue shade (neutrals + one blue) across all interactive and highlight styling.",
       "acceptanceCriteria": [
-        "The footer includes the email and phone number displayed as text and as clickable links (mailto:electrobeezindia@gmail.com and tel:+918638493216).",
-        "If contact details are included in the header, they remain responsive (do not overflow on mobile) and are accessible.",
-        "The contact details are visible in both light mode and dark mode and match the new blue-and-white palette."
+        "Primary CTAs, interactive states (hover/focus), and key highlights use one consistent blue shade (no multiple different blues for accents).",
+        "No new accent color families (e.g., green/purple/orange) are introduced for decorative emphasis; neutrals + the single blue are used.",
+        "Theme tokens in the Tailwind/Shadcn system remain consistent with the single-blue constraint (primary/ring/accent usage does not drift into other hues)."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/landing/LandingPage.tsx",
+          "path": "frontend/src/index.css",
           "operation": "modify",
-          "description": "Add footer contact details for ElectroBeez (email electrobeezindia@gmail.com and phone +918638493216) as visible text plus clickable mailto:electrobeezindia@gmail.com and tel:+918638493216 links; ensure styling matches the new theme in both light/dark modes. Verify the component's usage instructions before implementing."
+          "description": "Rework light-mode (and keep dark-mode coherent) color variables so the design uses neutrals for secondary/muted/accent surfaces and reserves a single consistent blue for primary/ring/links/highlights; remove or neutralize any extra accent hues so the only non-neutral accent family is the single blue."
         },
         {
           "path": "frontend/src/components/landing/SectionNav.tsx",
           "operation": "modify",
-          "description": "Optionally add compact contact links in the header (or mobile menu) in a responsive, non-overflowing layout; ensure accessibility (focus states, readable contrast) and theme consistency. Verify the component's usage instructions before implementing."
+          "description": "Update nav link hover/focus/active styles to comply with the single-blue accent constraint (use the same primary blue for emphasis and neutral surfaces for backgrounds), avoiding introducing additional accent hues; keep existing smooth-scroll behavior unchanged. Use shadcn-ui Button styling consistently for the CTA. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/landing/LandingPage.tsx",
+          "operation": "modify",
+          "description": "Audit all section highlights (icons, borders, rings, key numbers, and CTAs) to ensure they use the same single blue for accents and neutrals for everything else; avoid introducing additional accent color families. Use shadcn-ui Card/Button variants consistently. Verify the component's usage instructions before implementing."
         }
       ]
     },
     {
-      "id": "REQ-11",
-      "summary": "Add in-repo documentation guiding custom domain setup for an Internet Computer canister-hosted site with explicit DOMAIN and CANISTER_ID placeholders.",
+      "id": "REQ-22",
+      "summary": "Add subtle ambient motion and glass/3D-style effects with reduced-motion support.",
       "acceptanceCriteria": [
-        "A new documentation file exists (e.g., DOMAIN_SETUP.md or README section) describing the steps to map a custom domain to an IC canister-hosted website, including what DNS records to set and where to provide the canister ID.",
-        "Instructions include explicit placeholders for DOMAIN and CANISTER_ID (without guessing the user’s domain).",
-        "Documentation clarifies which steps are external to the codebase (domain registrar/DNS and boundary node configuration) vs. what is in-repo."
+        "At least 2–3 distinct ambient motion elements are present (e.g., slowly floating blurred shapes, subtle animated gradient sheen, gentle hover micro-interactions).",
+        "Glassmorphism is used intentionally on key surfaces (e.g., nav on scroll, hero/donation card treatments) via translucency + blur, while keeping readability high.",
+        "Animations respect accessibility: if the user has reduced-motion enabled, motion effects are reduced/disabled (no continuously moving elements)."
       ],
       "file_operations": [
         {
-          "path": "frontend/DOMAIN_SETUP.md",
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Add/extend lightweight keyframes/animations needed for ambient motion (e.g., slow float, subtle gradient shimmer, gentle pulse) and ensure they can be paired with Tailwind motion-reduce utilities for accessibility."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add global CSS support for ambient effects and accessibility (e.g., helper classes for glass surfaces and animated gradient sheen, and explicit prefers-reduced-motion overrides to disable continuous animations when reduced-motion is enabled)."
+        },
+        {
+          "path": "frontend/src/components/landing/AmbientBackground.tsx",
           "operation": "create",
-          "description": "Create a custom domain setup guide for Internet Computer hosting that explains (1) DNS records to configure, (2) where/how to provide the canister ID, and (3) boundary node/custom domain configuration steps, using explicit placeholders DOMAIN and CANISTER_ID and clearly separating external steps from in-repo steps."
+          "description": "Create a lightweight ambient background component that renders subtle floating/blurred shapes and/or a soft animated gradient overlay behind key sections; ensure effects are non-distracting and reduced/disabled under reduced-motion. Wire this component into the landing page (no new routes)."
+        },
+        {
+          "path": "frontend/src/components/landing/LandingPage.tsx",
+          "operation": "modify",
+          "description": "Integrate AmbientBackground and apply glassmorphism/3D-style treatments to key surfaces (e.g., hero overlay panels, donation card styling) and add gentle hover micro-interactions to cards/buttons while maintaining readability and reduced-motion compliance. Use shadcn-ui Card/Button as the base surfaces. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-23",
+      "summary": "Redesign the sticky top navigation with a futuristic glassmorphism scrolled state while preserving behavior and mobile interactions.",
+      "acceptanceCriteria": [
+        "The nav remains fixed at the top and continues to change style on scroll as it does now (scrolled vs not scrolled state).",
+        "The scrolled state uses a futuristic/glass-like style (translucent + blur), consistent with the single-blue accent constraint.",
+        "Desktop and mobile menu interactions still work (open/close, smooth scroll to anchors, Donate/Support button scrolls to #donate)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/landing/SectionNav.tsx",
+          "operation": "modify",
+          "description": "Update the visual design of the sticky nav to match the new futuristic theme: keep fixed positioning and existing scroll-state behavior, implement a glass-like scrolled state (translucent white + blur + subtle border/shadow) that uses only the single blue for accents; ensure desktop/mobile menus and smooth-scroll interactions remain working. Use shadcn-ui Button for the CTA. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add or refine shared styles (tokens/classes) to support nav glassmorphism (e.g., translucent surfaces, subtle border/ring treatment) in a way consistent with the white background and single-blue accent constraint."
         }
       ]
     }

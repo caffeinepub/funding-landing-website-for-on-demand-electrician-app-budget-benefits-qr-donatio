@@ -1,12 +1,14 @@
 # Specification
 
 ## Summary
-**Goal:** Update the landing site branding to ElectroBeez by adding the provided logo across key sections, switching to a professional blue-and-white theme, adding company contact details, and documenting how to connect a custom domain to the deployed Internet Computer canister.
+**Goal:** Fully redesign the single-page landing experience with a futuristic, professional look on a white background, using a single consistent blue accent and subtle ambient motion—while keeping existing content meaning and anchor navigation intact.
 
 **Planned changes:**
-- Add the ElectroBeez logo (from uploaded assets) as the brand mark in the header navigation, and also display it in the hero and footer as responsive static frontend assets.
-- Replace the existing monochrome styling with a consistent blue-and-white palette by updating global theme tokens (light and dark mode) and refactoring landing page component classes to remove hard-coded monochrome utilities.
-- Add contact details (electrobeezindia@gmail.com, +918638493216) to the landing page (at minimum in the footer) with clickable `mailto:` and `tel:` links and styling that matches the new theme.
-- Add a documentation file describing how to set up a custom domain for an IC-hosted site, including DNS records and boundary node/custom domain configuration, with placeholders for `DOMAIN` and `CANISTER_ID`.
+- Redesign the overall landing page layout and each core section’s visual structure (Hero, Donation, About, Budget, Benefits, Footer) while keeping it a single long scrolling page.
+- Preserve and keep usable the existing section anchor IDs for navigation: #home, #about, #budget, #benefits, #donate (smooth scrolling remains).
+- Apply a site-wide white background (light mode) with subtle overlays only (no heavy tinted section fills), maintaining a cohesive futuristic/professional style.
+- Constrain accents to one consistent shade of blue for primary actions, links, highlights, icons, and interactive states; avoid introducing new accent hues.
+- Add 2–3 subtle ambient motion/3D-style effects (e.g., gentle floating shapes, animated sheen/gradient, hover micro-interactions) with reduced-motion support.
+- Update the sticky top navigation styling to match the redesign (including glassmorphism treatment on scroll) while preserving desktop/mobile behavior and the Donate/Support CTA scroll-to-#donate behavior.
 
-**User-visible outcome:** The site shows the ElectroBeez logo in the header/hero/footer, uses a blue-and-white professional look in both light and dark modes, displays clickable email/phone contact info (at least in the footer), and includes a clear guide for pointing a custom domain at the deployed canister.
+**User-visible outcome:** Visitors see a newly redesigned, futuristic white-and-blue single-page landing site with subtle motion, and can still use the top navigation to smoothly scroll to the same sections via the existing anchors.

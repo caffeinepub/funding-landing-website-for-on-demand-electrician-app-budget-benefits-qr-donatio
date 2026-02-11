@@ -1,45 +1,73 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-11T11:24:31.633Z",
-  "summary": "Diff implements the blue/white theme tokens, adds ElectroBeez logo to header and hero, adds contact links in the header, updates favicon/title, and adds a DOMAIN_SETUP.md guide with DOMAIN/CANISTER_ID placeholders. However, evidence for the required footer logo/contact updates is not visible in the provided truncated diff summary, and backend changes were introduced despite being unnecessary for the requested frontend/documentation work.",
+  "generatedAt": "2026-02-11T18:22:11.037Z",
+  "summary": "The diff largely implements the requested single-page landing redesign with preserved anchors, white background, glassmorphism nav-on-scroll, and multiple ambient motion elements with reduced-motion handling. However, it violates an explicit constraint by modifying an immutable file path, and the “single consistent blue accent only” requirement appears not fully enforced due to non-blue accent colors being introduced/kept in theme tokens and ambient effects.",
   "missing_requirements": [
     {
-      "id": "REQ-8",
-      "requirement": "Footer section of the landing page includes the ElectroBeez logo (or a compact variant) with appropriate sizing and spacing.",
-      "reason": "LandingPage.tsx is truncated before the footer, and no other footer component diff is shown; the diff summary does not provide direct code evidence of a footer logo being rendered.",
+      "id": "REQ-21",
+      "requirement": "Constrain the color system so that all non-white accents use a single consistent shade of blue and avoid introducing additional accent hues.",
+      "reason": "Theme tokens and ambient styling include non-blue accent color(s) and multiple different blue hues, which conflicts with a strict single-accent-blue constraint.",
       "evidence": [
-        "frontend/src/components/landing/LandingPage.tsx (truncated)"
+        "frontend/src/index.css"
       ]
     },
     {
-      "id": "REQ-10",
-      "requirement": "Footer includes the email and phone number displayed as text and as clickable links (mailto:electrobeezindia@gmail.com and tel:+918638493216).",
-      "reason": "SectionNav.tsx shows clickable email/phone in the header, but LandingPage.tsx is truncated and does not show the footer; no direct diff evidence confirms footer contact links.",
+      "requirement": "Frontend immutable paths must not be edited: frontend/src/main.tsx (and other listed paths).",
+      "reason": "The diff summary indicates frontend/src/main.tsx was modified, which violates the \"immutable paths must not be edited\" constraint.",
       "evidence": [
-        "frontend/src/components/landing/SectionNav.tsx (shows header contact)",
-        "frontend/src/components/landing/LandingPage.tsx (truncated)"
+        "frontend-file-summaries.txt"
       ]
     }
   ],
   "hallucinated_features": [
     {
-      "description": "Backend canister-id storage API (setCanisterId/getCanisterId) added to backend/main.mo.",
-      "reason": "BuildRequest explicitly states backend changes are not required for logo/theme/contact updates and should only be added if strictly necessary; the diff adds new backend functionality unrelated to the requested UI/theme/logo/contact/doc changes.",
+      "description": "Added custom domain setup documentation (DOMAIN_SETUP.md).",
+      "reason": "Not requested by REQ-19..REQ-23 and not necessary for the redesign requirements.",
       "evidence": [
-        "backend/main.mo"
+        "frontend/DOMAIN_SETUP.md",
+        "frontend-file-summaries.txt"
+      ]
+    },
+    {
+      "description": "Added a redeploy marker mechanism to force bundle hash changes.",
+      "reason": "Not requested as part of the landing page redesign requirements.",
+      "evidence": [
+        "frontend/src/redeployMarker.ts",
+        "frontend-file-summaries.txt"
+      ]
+    },
+    {
+      "description": "Added/changed footer attribution link with caffeine.ai UTM tracking.",
+      "reason": "Not requested in the redesign requirements and introduces new outbound tracking behavior.",
+      "evidence": [
+        "frontend/src/components/landing/sections/FooterSection.tsx",
+        "frontend-file-summaries.txt"
+      ]
+    },
+    {
+      "description": "Updated HTML page title and favicon reference.",
+      "reason": "Not explicitly requested by the redesign requirements provided.",
+      "evidence": [
+        "frontend/index.html",
+        "frontend-file-summaries.txt"
       ]
     }
   ],
   "confidence": 0.74,
   "changed_files": [
-    "backend/main.mo",
     "frontend-file-summaries.txt",
-    "frontend/DOMAIN_SETUP.md",
-    "frontend/index.html",
+    "frontend/src/components/landing/AmbientBackground.tsx",
     "frontend/src/components/landing/LandingPage.tsx",
     "frontend/src/components/landing/SectionNav.tsx",
+    "frontend/src/components/landing/sections/AboutSection.tsx",
+    "frontend/src/components/landing/sections/BenefitsSection.tsx",
+    "frontend/src/components/landing/sections/BudgetSection.tsx",
+    "frontend/src/components/landing/sections/DonationSection.tsx",
+    "frontend/src/components/landing/sections/FooterSection.tsx",
+    "frontend/src/components/landing/sections/HeroSection.tsx",
     "frontend/src/index.css",
+    "frontend/tailwind.config.js",
     "project_state.json"
   ]
 }

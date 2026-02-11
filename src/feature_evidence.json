@@ -2,12 +2,16 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-add-the-uploaded-electrobeez-logo-image-as-the-company-logo-in-the-top-navigation-header-and-also-display-the-same-logo-in-other-sections-of-the-landing-page-hero-and-footer",
-      "featureTitle": "Add the uploaded ElectroBeez logo image as the company logo in the top navigation/header and also display the same logo in other sections of the landing page (hero and footer).",
+      "featureId": "feature-redesign-the-landing-page-as-a-full-layout-section-redesign-still-a-single-long-scrolling-page-while-keeping-the-existing-content-meaning-and-the-existing-section-anchors-usable-for-navigation-home-about-budget-benefits-donate",
+      "featureTitle": "Redesign the landing page as a full layout + section redesign (still a single long scrolling page), while keeping the existing content meaning and the existing section anchors usable for navigation: #home, #about, #budget, #benefits, #donate.",
       "files": [
-        "frontend/index.html",
         "frontend/src/components/landing/LandingPage.tsx",
-        "frontend/src/components/landing/SectionNav.tsx"
+        "frontend/src/components/landing/sections/AboutSection.tsx",
+        "frontend/src/components/landing/sections/BenefitsSection.tsx",
+        "frontend/src/components/landing/sections/BudgetSection.tsx",
+        "frontend/src/components/landing/sections/DonationSection.tsx",
+        "frontend/src/components/landing/sections/FooterSection.tsx",
+        "frontend/src/components/landing/sections/HeroSection.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -17,13 +21,32 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-8"
+        "REQ-19"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-replace-the-current-monochrome-theme-across-the-entire-site-with-a-professional-blue-and-white-color-palette-updating-both-light-mode-and-dark-mode-theme-tokens-and-refactoring-component-classes-as-needed-to-match-the-new-palette-consistently",
-      "featureTitle": "Replace the current monochrome theme across the entire site with a professional blue-and-white color palette, updating both light mode and dark mode theme tokens and refactoring component classes as needed to match the new palette consistently.",
+      "featureId": "feature-enforce-a-white-background-across-the-website-light-mode-and-ensure-the-overall-visual-styling-remains-futuristic-and-professional-with-a-clean-high-end-look",
+      "featureTitle": "Enforce a white background across the website (light mode) and ensure the overall visual styling remains futuristic and professional with a clean, high-end look.",
+      "files": [
+        "frontend/src/components/landing/LandingPage.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-20"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-constrain-the-color-system-so-that-all-non-white-accents-use-a-single-consistent-shade-of-blue-used-for-primary-actions-links-highlights-icons-borders-rings-and-avoid-introducing-additional-accent-hues",
+      "featureTitle": "Constrain the color system so that all non-white accents use a single consistent shade of blue (used for primary actions, links, highlights, icons, borders/rings), and avoid introducing additional accent hues.",
       "files": [
         "frontend/src/components/landing/LandingPage.tsx",
         "frontend/src/components/landing/SectionNav.tsx",
@@ -37,16 +60,18 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-9"
+        "REQ-21"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-add-the-company-contact-details-email-electrobeezindia-gmail-com-phone-918638493216-to-appropriate-sections-of-the-landing-page-at-minimum-footer-optionally-header-with-clickable-mailto-and-tel-links",
-      "featureTitle": "Add the company contact details (email: electrobeezindia@gmail.com, phone: +918638493216) to appropriate sections of the landing page (at minimum: footer; optionally: header), with clickable mailto and tel links.",
+      "featureId": "feature-add-subtle-ambient-motion-3d-style-effects-to-the-landing-page-design-using-lightweight-visual-techniques-e-g-glassmorphism-panels-soft-gradients-floating-shapes-gentle-animated-highlights-without-making-the-page-feel-distracting",
+      "featureTitle": "Add subtle ambient motion/3D-style effects to the landing page design, using lightweight visual techniques (e.g., glassmorphism panels, soft gradients, floating shapes, gentle animated highlights) without making the page feel distracting.",
       "files": [
+        "frontend/src/components/landing/AmbientBackground.tsx",
         "frontend/src/components/landing/LandingPage.tsx",
-        "frontend/src/components/landing/SectionNav.tsx"
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -56,15 +81,16 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-10"
+        "REQ-22"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-provide-a-project-documentation-page-that-guides-the-user-through-making-the-deployed-site-accessible-via-their-custom-domain-on-the-internet-computer-dns-records-boundary-node-custom-domain-configuration-including-placeholders-for-the-user-s-domain-name-and-deployed-canister-id",
-      "featureTitle": "Provide a project documentation page that guides the user through making the deployed site accessible via their custom domain on the Internet Computer (DNS records + boundary node/custom domain configuration), including placeholders for the user’s domain name and deployed canister ID.",
+      "featureId": "feature-update-the-sticky-top-navigation-visual-treatment-to-match-the-futuristic-redesign-white-background-context-glassmorphism-on-scroll-while-preserving-existing-navigation-behavior-and-contact-cta-usability",
+      "featureTitle": "Update the sticky top navigation visual treatment to match the futuristic redesign (white background context + glassmorphism on scroll), while preserving existing navigation behavior and contact CTA usability.",
       "files": [
-        "frontend/DOMAIN_SETUP.md"
+        "frontend/src/components/landing/SectionNav.tsx",
+        "frontend/src/index.css"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -74,7 +100,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-11"
+        "REQ-23"
       ],
       "confidence": "high"
     }
