@@ -1,0 +1,17 @@
+{
+  "backend/main.mo": "Actor stores and retrieves canister IDs per caller using a map with a trap on missing entries.",
+  "feature_evidence.json": "Defines feature changes, affected files, components, and test IDs for multiple site enhancements.",
+  "frontend-file-summaries.txt": "Lists short summaries of major frontend files including landing components, styles, Tailwind config, and documentation.",
+  "frontend/DOMAIN_SETUP.md": "Guide explaining DNS and boundary node steps to map a custom domain to the deployed IC canister.",
+  "frontend/index.css": "Global Tailwind base with OKLCH blue‑white theme tokens for light and dark modes.",
+  "frontend/index.html": "HTML entry point setting favicon, page title, and mounting the React app.",
+  "frontend/src/App.tsx": "Root component rendering the LandingPage.",
+  "frontend/src/components/landing/LandingPage.tsx": "Landing page UI with hero, donation, and themed sections using ElectroBeez branding and assets.",
+  "frontend/src/components/landing/SectionNav.tsx": "Sticky navigation bar with logo, smooth-scroll links, contact info, and mobile menu support.",
+  "frontend/src/hooks/useActor.ts": "Hook that creates and manages an IC backend actor, updating when Internet Identity changes.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Provides a React context and provider for Internet Identity authentication, including login, logout, and identity state handling. Wraps AuthClient setup and exposes status flags for login flow.",
+  "frontend/src/index.css": "Defines Tailwind base layers and custom OKLCH color variables for light and dark themes. Applies global styles for borders, background, and text.",
+  "frontend/src/main.tsx": "Bootstraps the React app, wrapping it with React Query and the Internet Identity provider. Loads global CSS and renders App at the root.",
+  "frontend/tailwind.config.js": "Tailwind configuration extending theme tokens using OKLCH CSS variables, adding custom colors, animations, and plugins. Enables class-based dark mode and specifies content paths.",
+  "project_state.json": "Holds project metadata describing a funding landing page build, including features, requirements, image tasks, and project state version info."
+}

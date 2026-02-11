@@ -1,0 +1,119 @@
+{
+  "kind": "build_request",
+  "title": "Add ElectroBeez logo across site, switch to blue/white professional theme, add contact info, and provide custom domain setup guidance",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-8",
+      "text": "Add the uploaded ElectroBeez logo image as the company logo in the top navigation/header and also display the same logo in other sections of the landing page (hero and footer).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-5",
+          "msg-7",
+          "msg-11"
+        ],
+        "quotes": [
+          "Add this image as the company logo and change the website theme like professional which looks cool",
+          "Add the logo in the top navigation/header and also in the other sections (hero,footer,etc)",
+          "Please proceed"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The header navigation (frontend/src/components/landing/SectionNav.tsx) shows the ElectroBeez logo in place of the current icon/brand mark.",
+        "The hero section (frontend/src/components/landing/LandingPage.tsx) includes the ElectroBeez logo in a visually prominent, responsive placement.",
+        "The footer section of the landing page includes the ElectroBeez logo (or a compact variant) with appropriate sizing and spacing.",
+        "Logo images are referenced as static assets from the frontend (not served from the backend)."
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Replace the current monochrome theme across the entire site with a professional blue-and-white color palette, updating both light mode and dark mode theme tokens and refactoring component classes as needed to match the new palette consistently.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-7",
+          "msg-13",
+          "msg-16"
+        ],
+        "quotes": [
+          "switch to a new color palette altogether",
+          "The new palette replace the current monochrome theme accross the entire site",
+          "Blue and white"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Global theme tokens in frontend/src/index.css are updated from monochrome neutrals to a blue-and-white palette for both :root and .dark variables (background/foreground/primary/secondary/accent/border/ring/etc).",
+        "Hard-coded monochrome utility styling in landing components (e.g., zinc/black gradients and text colors in frontend/src/components/landing/LandingPage.tsx and frontend/src/components/landing/SectionNav.tsx) is refactored so the UI consistently reflects the blue-and-white theme.",
+        "Primary call-to-action buttons and key accents use the new blue primary color (and remain accessible with sufficient contrast).",
+        "No section reverts to the old monochrome look after the change (hero, donate, about, budget, benefits, navigation, footer)."
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Add the company contact details (email: electrobeezindia@gmail.com, phone: +918638493216) to appropriate sections of the landing page (at minimum: footer; optionally: header), with clickable mailto and tel links.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-13",
+          "msg-11"
+        ],
+        "quotes": [
+          "Also add electrobeezindia@gmail.com this as EMAIL and +918638493216 as company number",
+          "Please proceed"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The footer includes the email and phone number displayed as text and as clickable links (mailto:electrobeezindia@gmail.com and tel:+918638493216).",
+        "If contact details are included in the header, they remain responsive (do not overflow on mobile) and are accessible.",
+        "The contact details are visible in both light mode and dark mode and match the new blue-and-white palette."
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Provide a project documentation page that guides the user through making the deployed site accessible via their custom domain on the Internet Computer (DNS records + boundary node/custom domain configuration), including placeholders for the user’s domain name and deployed canister ID.",
+      "target": "unknown",
+      "source": {
+        "messageIds": [
+          "msg-3"
+        ],
+        "quotes": [
+          "Yes, I want the website to be accessible, Setup my domain"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A new documentation file exists (e.g., DOMAIN_SETUP.md or README section) describing the steps to map a custom domain to an IC canister-hosted website, including what DNS records to set and where to provide the canister ID.",
+        "Instructions include explicit placeholders for DOMAIN and CANISTER_ID (without guessing the user’s domain).",
+        "Documentation clarifies which steps are external to the codebase (domain registrar/DNS and boundary node configuration) vs. what is in-repo."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit files under frontend/src/components/ui (Shadcn components); compose and override via props/classes instead.",
+    "Do not modify any immutable paths listed in SYSTEM_CONTEXT.frontend.immutablePaths.",
+    "Backend must remain a single Motoko actor in backend/main.mo; only add backend code if strictly necessary for the requested changes (it is not required for logo/theme/contact updates).",
+    "Use English for any user-facing text added or modified."
+  ],
+  "nonGoals": [
+    "Implementing an automated DNS/domain registrar integration or programmatically configuring IC boundary nodes from within the app.",
+    "Adding new unrelated landing page sections or changing the existing informational content beyond what is required to place the logo, update theme styling, and add the provided contact details."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": [
+      "Create a transparent, tightly-cropped square logo image (FB_IMG_1761927854517.jpg > electrobeez-logo.dim_512x512.png)",
+      "Create a transparent, tightly-cropped horizontal logo lockup (FB_IMG_1761927854517.jpg > electrobeez-logo-horizontal.dim_1200x300.png)",
+      "Create a favicon-sized icon version (FB_IMG_1761927854517.jpg > electrobeez-favicon.dim_64x64.png)"
+    ]
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

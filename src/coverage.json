@@ -1,0 +1,98 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-11T11:24:31.635Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 4,
+    "implemented": 4,
+    "items": [
+      {
+        "id": "REQ-10",
+        "summary": "Add the company contact details (email: electrobeezindia@gmail.com, phone: +918638493216) to appropriate sections of the landing page (at minimum: footer; optionally: header), with clickable mailto and tel links.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/landing/LandingPage.tsx",
+          "frontend/src/components/landing/SectionNav.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/landing/LandingPage.tsx",
+          "frontend/src/components/landing/SectionNav.tsx"
+        ]
+      },
+      {
+        "id": "REQ-11",
+        "summary": "Provide a project documentation page that guides the user through making the deployed site accessible via their custom domain on the Internet Computer (DNS records + boundary node/custom domain configuration), including placeholders for the user’s domain name and deployed canister ID.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/DOMAIN_SETUP.md"
+        ],
+        "matchedFiles": [
+          "frontend/DOMAIN_SETUP.md"
+        ]
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Add the uploaded ElectroBeez logo image as the company logo in the top navigation/header and also display the same logo in other sections of the landing page (hero and footer).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/assets/generated/electrobeez-logo.dim_512x512.png",
+          "frontend/public/assets/generated/electrobeez-logo-horizontal.dim_1200x300.png",
+          "frontend/public/assets/generated/electrobeez-favicon.dim_64x64.png",
+          "frontend/src/components/landing/SectionNav.tsx",
+          "frontend/src/components/landing/LandingPage.tsx",
+          "frontend/index.html"
+        ],
+        "matchedFiles": [
+          "frontend/public/assets/generated/electrobeez-logo.dim_512x512.png",
+          "frontend/public/assets/generated/electrobeez-logo-horizontal.dim_1200x300.png",
+          "frontend/public/assets/generated/electrobeez-favicon.dim_64x64.png",
+          "frontend/src/components/landing/SectionNav.tsx",
+          "frontend/src/components/landing/LandingPage.tsx",
+          "frontend/index.html"
+        ]
+      },
+      {
+        "id": "REQ-9",
+        "summary": "Replace the current monochrome theme across the entire site with a professional blue-and-white color palette, updating both light mode and dark mode theme tokens and refactoring component classes as needed to match the new palette consistently.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/index.css",
+          "frontend/src/components/landing/SectionNav.tsx",
+          "frontend/src/components/landing/LandingPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/index.css",
+          "frontend/src/components/landing/SectionNav.tsx",
+          "frontend/src/components/landing/LandingPage.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/main.mo",
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/DOMAIN_SETUP.md",
+    "frontend/index.html",
+    "frontend/public/assets/generated/electrobeez-favicon.dim_64x64.png",
+    "frontend/public/assets/generated/electrobeez-logo-horizontal.dim_1200x300.png",
+    "frontend/public/assets/generated/electrobeez-logo.dim_512x512.png",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/components/landing/LandingPage.tsx",
+    "frontend/src/components/landing/SectionNav.tsx",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/index.css",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

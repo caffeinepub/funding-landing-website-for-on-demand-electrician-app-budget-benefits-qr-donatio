@@ -1,0 +1,9 @@
+{
+  "frontend/src/App.tsx": "Main application component that renders the LandingPage component as the root view.",
+  "frontend/src/components/landing/LandingPage.tsx": "Complete single-page landing experience with ElectroBeez logo in hero and footer, blue-and-white theme throughout all sections, contact details in footer, and updated styling using semantic theme tokens.",
+  "frontend/src/components/landing/SectionNav.tsx": "Sticky navigation component with ElectroBeez horizontal logo, contact details (email and phone) in header and mobile menu, and blue-themed styling using theme tokens.",
+  "frontend/src/index.css": "Global styles with OKLCH blue-and-white color system for both light and dark modes, replacing the previous monochrome palette.",
+  "frontend/tailwind.config.js": "Tailwind configuration with extended theme supporting the electrician-themed color palette and Inter font family.",
+  "frontend/index.html": "HTML entry point with updated favicon reference to ElectroBeez logo and updated page title.",
+  "frontend/DOMAIN_SETUP.md": "Comprehensive documentation guide for setting up a custom domain for the Internet Computer-hosted ElectroBeez application, including DNS configuration, boundary node registration, and troubleshooting steps."
+}

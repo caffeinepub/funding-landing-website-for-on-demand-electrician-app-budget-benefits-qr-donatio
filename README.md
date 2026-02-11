@@ -1,2 +1,3 @@
-# funding-landing-website-for-on-demand-electrician-app-budget-benefits-qr-donatio
-Exported from Caffeine project: Funding landing website for on-demand electrician app (budget + benefits + QR donation section)
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`

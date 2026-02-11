@@ -1,0 +1,113 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "ElectroBeez branding, blue/white theme refresh, contact details, and domain setup documentation",
+  "requirements": [
+    {
+      "id": "REQ-8",
+      "summary": "Add ElectroBeez logo as the brand mark in header navigation and also display it in the hero and footer sections using static frontend assets.",
+      "acceptanceCriteria": [
+        "The header navigation (frontend/src/components/landing/SectionNav.tsx) shows the ElectroBeez logo in place of the current icon/brand mark.",
+        "The hero section (frontend/src/components/landing/LandingPage.tsx) includes the ElectroBeez logo in a visually prominent, responsive placement.",
+        "The footer section of the landing page includes the ElectroBeez logo (or a compact variant) with appropriate sizing and spacing.",
+        "Logo images are referenced as static assets from the frontend (not served from the backend)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/electrobeez-logo.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the generated transparent square ElectroBeez logo asset at this exact path so it can be referenced as a static frontend asset."
+        },
+        {
+          "path": "frontend/public/assets/generated/electrobeez-logo-horizontal.dim_1200x300.png",
+          "operation": "create",
+          "description": "Add the generated transparent horizontal ElectroBeez logo lockup asset at this exact path so it can be referenced as a static frontend asset."
+        },
+        {
+          "path": "frontend/public/assets/generated/electrobeez-favicon.dim_64x64.png",
+          "operation": "create",
+          "description": "Add the generated transparent favicon-sized ElectroBeez icon at this exact path so it can be referenced as a static frontend asset."
+        },
+        {
+          "path": "frontend/src/components/landing/SectionNav.tsx",
+          "operation": "modify",
+          "description": "Replace the current Zap icon/brand text with the ElectroBeez logo (prefer the horizontal lockup) using the static asset at frontend/public/assets/generated/electrobeez-logo-horizontal.dim_1200x300.png; ensure responsive sizing and accessible alt text. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/landing/LandingPage.tsx",
+          "operation": "modify",
+          "description": "Add the ElectroBeez logo into the hero section (use frontend/public/assets/generated/electrobeez-logo.dim_512x512.png or the horizontal lockup as appropriate) in a prominent, responsive placement; add the logo into the landing page footer area as well. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Update the app favicon reference to use the generated asset at frontend/public/assets/generated/electrobeez-favicon.dim_64x64.png."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Switch the entire site theme to a professional blue-and-white palette by updating global theme tokens and refactoring landing page styling to avoid monochrome hard-coded utilities.",
+      "acceptanceCriteria": [
+        "Global theme tokens in frontend/src/index.css are updated from monochrome neutrals to a blue-and-white palette for both :root and .dark variables (background/foreground/primary/secondary/accent/border/ring/etc).",
+        "Hard-coded monochrome utility styling in landing components (e.g., zinc/black gradients and text colors in frontend/src/components/landing/LandingPage.tsx and frontend/src/components/landing/SectionNav.tsx) is refactored so the UI consistently reflects the blue-and-white theme.",
+        "Primary call-to-action buttons and key accents use the new blue primary color (and remain accessible with sufficient contrast).",
+        "No section reverts to the old monochrome look after the change (hero, donate, about, budget, benefits, navigation, footer)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Replace the current monochrome OKLCH variable set with a blue-and-white palette for both light (:root) and dark (.dark) modes, covering background/foreground/card/popover/primary/secondary/muted/accent/destructive/border/input/ring/chart tokens."
+        },
+        {
+          "path": "frontend/src/components/landing/SectionNav.tsx",
+          "operation": "modify",
+          "description": "Refactor navigation styles to use theme tokens (e.g., bg-background, text-foreground, border-border, and primary accents) instead of zinc/black hard-coded classes; ensure CTA button uses the new primary blue styling consistently. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/landing/LandingPage.tsx",
+          "operation": "modify",
+          "description": "Refactor hero, donate, about, budget, benefits, and footer section styling to remove hard-coded zinc/black gradients and text colors, aligning all sections with the updated blue-and-white theme tokens and accessible contrast. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Add ElectroBeez contact email and phone number to the landing page (at minimum in the footer) with clickable mailto and tel links and theme-consistent styling.",
+      "acceptanceCriteria": [
+        "The footer includes the email and phone number displayed as text and as clickable links (mailto:electrobeezindia@gmail.com and tel:+918638493216).",
+        "If contact details are included in the header, they remain responsive (do not overflow on mobile) and are accessible.",
+        "The contact details are visible in both light mode and dark mode and match the new blue-and-white palette."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/landing/LandingPage.tsx",
+          "operation": "modify",
+          "description": "Add footer contact details for ElectroBeez (email electrobeezindia@gmail.com and phone +918638493216) as visible text plus clickable mailto:electrobeezindia@gmail.com and tel:+918638493216 links; ensure styling matches the new theme in both light/dark modes. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/landing/SectionNav.tsx",
+          "operation": "modify",
+          "description": "Optionally add compact contact links in the header (or mobile menu) in a responsive, non-overflowing layout; ensure accessibility (focus states, readable contrast) and theme consistency. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Add in-repo documentation guiding custom domain setup for an Internet Computer canister-hosted site with explicit DOMAIN and CANISTER_ID placeholders.",
+      "acceptanceCriteria": [
+        "A new documentation file exists (e.g., DOMAIN_SETUP.md or README section) describing the steps to map a custom domain to an IC canister-hosted website, including what DNS records to set and where to provide the canister ID.",
+        "Instructions include explicit placeholders for DOMAIN and CANISTER_ID (without guessing the user’s domain).",
+        "Documentation clarifies which steps are external to the codebase (domain registrar/DNS and boundary node configuration) vs. what is in-repo."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/DOMAIN_SETUP.md",
+          "operation": "create",
+          "description": "Create a custom domain setup guide for Internet Computer hosting that explains (1) DNS records to configure, (2) where/how to provide the canister ID, and (3) boundary node/custom domain configuration steps, using explicit placeholders DOMAIN and CANISTER_ID and clearly separating external steps from in-repo steps."
+        }
+      ]
+    }
+  ]
+}
