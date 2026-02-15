@@ -101,9 +101,21 @@ export default function SectionNav() {
             >
               Donate
             </Button>
-            <div className="pt-4 border-t border-primary/10 space-y-2 text-sm text-foreground/60">
-              <p>Email: {CONTACT.email}</p>
-              <p>Phone: {CONTACT.phone.display}</p>
+            <div className="pt-4 border-t border-primary/10 space-y-3 text-sm text-foreground/60">
+              <p className="font-medium text-foreground">Email:</p>
+              <p>{CONTACT.email}</p>
+              <p className="font-medium text-foreground pt-2">Directors:</p>
+              {CONTACT.directors.map((director) => (
+                <div key={director.name} className="space-y-1">
+                  <p className="text-foreground/80 font-medium">{director.name}</p>
+                  <a 
+                    href={`tel:${director.phone.raw}`}
+                    className="text-foreground/60 hover:text-primary transition-colors"
+                  >
+                    {director.phone.display}
+                  </a>
+                </div>
+              ))}
             </div>
           </div>
         </div>

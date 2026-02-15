@@ -25,10 +25,25 @@ export default function DonationSection() {
                 {/* Scan & Pay Section */}
                 <div className="space-y-4">
                   <h3 className="font-bold text-2xl text-foreground text-center mb-6">Scan & Pay</h3>
+                  
+                  {/* YouTube Video Embed */}
+                  <div className="mb-6">
+                    <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                      <iframe
+                        className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
+                        src="https://www.youtube.com/embed/WjBwEiAExZs"
+                        title="ElectroBeez Support Video"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    </div>
+                  </div>
+
+                  {/* QR Code */}
                   <div className="flex justify-center">
                     <div className="glass-surface p-8 rounded-2xl shadow-xl border-2 border-primary/30 hover:border-primary/50 transition-all">
                       <img 
-                        src="/assets/Screenshot_2026-02-10-23-21-11-15_b86b87620f0dd897e4c0859ecbb2d537.jpg" 
+                        src="/assets/Screenshot_2026-02-15-13-24-14-54_4336b74596784d9a2aa81f87c2016f50-1.jpg" 
                         alt="Scan & Pay QR Code" 
                         className="w-full max-w-xs h-auto rounded-lg"
                       />

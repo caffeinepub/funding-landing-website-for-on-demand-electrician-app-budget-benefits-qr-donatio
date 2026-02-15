@@ -1,6 +1,6 @@
+import Map "mo:core/Map";
 import Text "mo:core/Text";
 import Runtime "mo:core/Runtime";
-import Map "mo:core/Map";
 
 actor {
   let projectMap = Map.empty<Text, Text>();

@@ -1,94 +1,37 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-11T18:22:11.040Z",
+  "generatedAt": "2026-02-15T08:40:06.772Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 5,
-    "implemented": 5,
+    "total": 2,
+    "implemented": 2,
     "items": [
       {
-        "id": "REQ-19",
-        "summary": "Redesign the landing page as a full layout + section redesign (still a single long scrolling page), while keeping the existing content meaning and the existing section anchors usable for navigation: #home, #about, #budget, #benefits, #donate.",
+        "id": "REQ-1",
+        "summary": "Force a fresh production redeploy by updating the deployment marker in `frontend/src/redeployMarker.ts`: set `REDEPLOY_MARKER.timestamp` to the current ISO timestamp and increment the `REDEPLOY_MARKER.buildId` version suffix (e.g., `production-publish-v10-...` to `production-publish-v11-...`).",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/landing/LandingPage.tsx",
-          "frontend/src/components/landing/sections/HeroSection.tsx",
-          "frontend/src/components/landing/sections/DonationSection.tsx",
-          "frontend/src/components/landing/sections/AboutSection.tsx",
-          "frontend/src/components/landing/sections/BudgetSection.tsx",
-          "frontend/src/components/landing/sections/BenefitsSection.tsx",
-          "frontend/src/components/landing/sections/FooterSection.tsx"
+          "frontend/src/redeployMarker.ts"
         ],
         "matchedFiles": [
-          "frontend/src/components/landing/LandingPage.tsx",
-          "frontend/src/components/landing/sections/HeroSection.tsx",
-          "frontend/src/components/landing/sections/DonationSection.tsx",
-          "frontend/src/components/landing/sections/AboutSection.tsx",
-          "frontend/src/components/landing/sections/BudgetSection.tsx",
-          "frontend/src/components/landing/sections/BenefitsSection.tsx",
-          "frontend/src/components/landing/sections/FooterSection.tsx"
+          "frontend/src/redeployMarker.ts"
         ]
       },
       {
-        "id": "REQ-20",
-        "summary": "Enforce a white background across the website (light mode) and ensure the overall visual styling remains futuristic and professional with a clean, high-end look.",
+        "id": "REQ-2",
+        "summary": "Publish the latest build to production and verify the deployment updated by checking the browser console log line emitted from `frontend/src/App.tsx` matches the new `REDEPLOY_MARKER` values: `[ElectroBeez Build] ID: ... | Timestamp: ...`.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/index.css",
-          "frontend/src/components/landing/LandingPage.tsx"
+          "frontend/src/App.tsx",
+          "frontend/DEPLOYMENT_TROUBLESHOOTING.md"
         ],
         "matchedFiles": [
-          "frontend/src/index.css",
-          "frontend/src/components/landing/LandingPage.tsx"
-        ]
-      },
-      {
-        "id": "REQ-21",
-        "summary": "Constrain the color system so that all non-white accents use a single consistent shade of blue (used for primary actions, links, highlights, icons, borders/rings), and avoid introducing additional accent hues.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/index.css",
-          "frontend/src/components/landing/SectionNav.tsx",
-          "frontend/src/components/landing/LandingPage.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/index.css",
-          "frontend/src/components/landing/SectionNav.tsx",
-          "frontend/src/components/landing/LandingPage.tsx"
-        ]
-      },
-      {
-        "id": "REQ-22",
-        "summary": "Add subtle ambient motion/3D-style effects to the landing page design, using lightweight visual techniques (e.g., glassmorphism panels, soft gradients, floating shapes, gentle animated highlights) without making the page feel distracting.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/tailwind.config.js",
-          "frontend/src/index.css",
-          "frontend/src/components/landing/AmbientBackground.tsx",
-          "frontend/src/components/landing/LandingPage.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/tailwind.config.js",
-          "frontend/src/index.css",
-          "frontend/src/components/landing/AmbientBackground.tsx",
-          "frontend/src/components/landing/LandingPage.tsx"
-        ]
-      },
-      {
-        "id": "REQ-23",
-        "summary": "Update the sticky top navigation visual treatment to match the futuristic redesign (white background context + glassmorphism on scroll), while preserving existing navigation behavior and contact CTA usability.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/landing/SectionNav.tsx",
-          "frontend/src/index.css"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/landing/SectionNav.tsx",
-          "frontend/src/index.css"
+          "frontend/src/App.tsx",
+          "frontend/DEPLOYMENT_TROUBLESHOOTING.md"
         ]
       }
     ]
@@ -98,17 +41,9 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/components/landing/AmbientBackground.tsx",
-    "frontend/src/components/landing/LandingPage.tsx",
-    "frontend/src/components/landing/SectionNav.tsx",
-    "frontend/src/components/landing/sections/AboutSection.tsx",
-    "frontend/src/components/landing/sections/BenefitsSection.tsx",
-    "frontend/src/components/landing/sections/BudgetSection.tsx",
-    "frontend/src/components/landing/sections/DonationSection.tsx",
-    "frontend/src/components/landing/sections/FooterSection.tsx",
-    "frontend/src/components/landing/sections/HeroSection.tsx",
-    "frontend/src/index.css",
-    "frontend/tailwind.config.js",
+    "frontend/DEPLOYMENT_TROUBLESHOOTING.md",
+    "frontend/src/App.tsx",
+    "frontend/src/redeployMarker.ts",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

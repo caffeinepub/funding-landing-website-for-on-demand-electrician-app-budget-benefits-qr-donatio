@@ -2,16 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-redesign-the-landing-page-as-a-full-layout-section-redesign-still-a-single-long-scrolling-page-while-keeping-the-existing-content-meaning-and-the-existing-section-anchors-usable-for-navigation-home-about-budget-benefits-donate",
-      "featureTitle": "Redesign the landing page as a full layout + section redesign (still a single long scrolling page), while keeping the existing content meaning and the existing section anchors usable for navigation: #home, #about, #budget, #benefits, #donate.",
+      "featureId": "feature-force-a-fresh-production-redeploy-by-updating-the-deployment-marker-in-frontend-src-redeploymarker-ts-set-redeploy-marker-timestamp-to-the-current-iso-timestamp-and-increment-the-redeploy-marker-buildid-version-suffix-e-g-production-publish-v10-to-production-publish-v11",
+      "featureTitle": "Force a fresh production redeploy by updating the deployment marker in `frontend/src/redeployMarker.ts`: set `REDEPLOY_MARKER.timestamp` to the current ISO timestamp and increment the `REDEPLOY_MARKER.buildId` version suffix (e.g., `production-publish-v10-...` to `production-publish-v11-...`).",
       "files": [
-        "frontend/src/components/landing/LandingPage.tsx",
-        "frontend/src/components/landing/sections/AboutSection.tsx",
-        "frontend/src/components/landing/sections/BenefitsSection.tsx",
-        "frontend/src/components/landing/sections/BudgetSection.tsx",
-        "frontend/src/components/landing/sections/DonationSection.tsx",
-        "frontend/src/components/landing/sections/FooterSection.tsx",
-        "frontend/src/components/landing/sections/HeroSection.tsx"
+        "frontend/src/redeployMarker.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -21,16 +15,16 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-19"
+        "REQ-1"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-enforce-a-white-background-across-the-website-light-mode-and-ensure-the-overall-visual-styling-remains-futuristic-and-professional-with-a-clean-high-end-look",
-      "featureTitle": "Enforce a white background across the website (light mode) and ensure the overall visual styling remains futuristic and professional with a clean, high-end look.",
+      "featureId": "feature-publish-the-latest-build-to-production-and-verify-the-deployment-updated-by-checking-the-browser-console-log-line-emitted-from-frontend-src-app-tsx-matches-the-new-redeploy-marker-values-electrobeez-build-id-timestamp",
+      "featureTitle": "Publish the latest build to production and verify the deployment updated by checking the browser console log line emitted from `frontend/src/App.tsx` matches the new `REDEPLOY_MARKER` values: `[ElectroBeez Build] ID: ... | Timestamp: ...`.",
       "files": [
-        "frontend/src/components/landing/LandingPage.tsx",
-        "frontend/src/index.css"
+        "frontend/DEPLOYMENT_TROUBLESHOOTING.md",
+        "frontend/src/App.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -40,67 +34,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-20"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-constrain-the-color-system-so-that-all-non-white-accents-use-a-single-consistent-shade-of-blue-used-for-primary-actions-links-highlights-icons-borders-rings-and-avoid-introducing-additional-accent-hues",
-      "featureTitle": "Constrain the color system so that all non-white accents use a single consistent shade of blue (used for primary actions, links, highlights, icons, borders/rings), and avoid introducing additional accent hues.",
-      "files": [
-        "frontend/src/components/landing/LandingPage.tsx",
-        "frontend/src/components/landing/SectionNav.tsx",
-        "frontend/src/index.css"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-21"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-subtle-ambient-motion-3d-style-effects-to-the-landing-page-design-using-lightweight-visual-techniques-e-g-glassmorphism-panels-soft-gradients-floating-shapes-gentle-animated-highlights-without-making-the-page-feel-distracting",
-      "featureTitle": "Add subtle ambient motion/3D-style effects to the landing page design, using lightweight visual techniques (e.g., glassmorphism panels, soft gradients, floating shapes, gentle animated highlights) without making the page feel distracting.",
-      "files": [
-        "frontend/src/components/landing/AmbientBackground.tsx",
-        "frontend/src/components/landing/LandingPage.tsx",
-        "frontend/src/index.css",
-        "frontend/tailwind.config.js"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-22"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-update-the-sticky-top-navigation-visual-treatment-to-match-the-futuristic-redesign-white-background-context-glassmorphism-on-scroll-while-preserving-existing-navigation-behavior-and-contact-cta-usability",
-      "featureTitle": "Update the sticky top navigation visual treatment to match the futuristic redesign (white background context + glassmorphism on scroll), while preserving existing navigation behavior and contact CTA usability.",
-      "files": [
-        "frontend/src/components/landing/SectionNav.tsx",
-        "frontend/src/index.css"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-23"
+        "REQ-2"
       ],
       "confidence": "high"
     }

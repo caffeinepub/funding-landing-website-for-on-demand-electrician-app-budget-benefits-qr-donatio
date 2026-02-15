@@ -1,261 +1,30 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 21,
-  "summary": "Build a simple funding/landing website for an on-demand electrician booking application project, including budget breakdown, benefits, a near-top donation section with Scan & Pay QR image plus bank donation details, company branding (logo), contact info, director names listed near the footer quick links, custom domain setup, and a full futuristic/professional visual redesign: white background with a single-shade blue for all non-white elements, plus subtle ambient motion/3D-style effects (gradients, glassmorphism, floating shapes) while remaining a single long landing page.",
-  "architectural_notes": [
-    "Custom domain to connect: www.electrobeez.in",
-    "Design direction: full redesign (sections/layout can change) but remains a single long landing page; white background + single-shade blue accents; subtle ambient animations with glassmorphism/gradients/floating shapes."
-  ],
-  "known_issues": [
-    "Live deployment link https://v3-your-project.caffeine.build/ returns DNS_PROBE_FINISHED_NXDOMAIN (site not reachable); user requested redeploy to fix.",
-    "Contact phone number displayed on the site is incorrect; needs to be replaced everywhere with +918638493216 (header/footer/any other occurrences).",
-    "Publishing/redeploy and contact-number update attempts are failing due to repeated AI service/internal LLM errors (changes not applied)."
-  ],
+  "projectStateVersion": 3,
+  "summary": "New project",
+  "architectural_notes": [],
+  "known_issues": [],
   "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-create-a-single-page-responsive-funding-landing-website-that-explains-the-on-demand-electrician-booking-application-project-rapido-like-design-direction-but-for-electricians-and-is-suitable-for-mobile-and-desktop-browsers",
-      "title": "Create a single-page, responsive funding/landing website that explains the on-demand electrician booking application project (Rapido-like design direction, but for electricians) and is suitable for mobile and desktop browsers.",
+      "id": "feature-force-a-fresh-production-redeploy-by-updating-the-deployment-marker-in-frontend-src-redeploymarker-ts-set-redeploy-marker-timestamp-to-the-current-iso-timestamp-and-increment-the-redeploy-marker-buildid-version-suffix-e-g-production-publish-v10-to-production-publish-v11",
+      "title": "Force a fresh production redeploy by updating the deployment marker in `frontend/src/redeployMarker.ts`: set `REDEPLOY_MARKER.timestamp` to the current ISO timestamp and increment the `REDEPLOY_MARKER.buildId` version suffix (e.g., `production-publish-v10-...` to `production-publish-v11-...`).",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-add-a-prominent-donation-section-near-the-top-of-the-page-that-displays-the-uploaded-scan-pay-image-with-a-heading-and-a-short-description-that-explains-how-donations-will-benefit-the-community-and-the-nation",
-      "title": "Add a prominent donation section near the top of the page that displays the uploaded Scan & Pay image with a heading and a short description that explains how donations will benefit the community and the nation.",
+      "id": "feature-publish-the-latest-build-to-production-and-verify-the-deployment-updated-by-checking-the-browser-console-log-line-emitted-from-frontend-src-app-tsx-matches-the-new-redeploy-marker-values-electrobeez-build-id-timestamp",
+      "title": "Publish the latest build to production and verify the deployment updated by checking the browser console log line emitted from `frontend/src/App.tsx` matches the new `REDEPLOY_MARKER` values: `[ElectroBeez Build] ID: ... | Timestamp: ...`.",
       "reqIds": [
         "REQ-2"
       ],
       "version": 1
-    },
-    {
-      "id": "feature-include-a-budget-breakdown-section-that-clearly-states-the-funding-requirement-is-5l-and-summarizes-what-the-funding-covers-for-completing-the-mobile-app-build",
-      "title": "Include a budget breakdown section that clearly states the funding requirement is 5L and summarizes what the funding covers for completing the mobile app build.",
-      "reqIds": [
-        "REQ-3"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-include-a-benefits-impact-section-that-highlights-benefits-to-the-electrician-community-more-leads-business-iti-graduates-skills-kickstart-and-placement-opportunities-and-broader-economic-boost",
-      "title": "Include a benefits/impact section that highlights: benefits to the electrician community (more leads/business), ITI graduates (skills kickstart and placement opportunities), and broader economic boost.",
-      "reqIds": [
-        "REQ-4"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-apply-a-cohesive-creative-visual-theme-across-the-landing-page-colors-typography-spacing-section-styling-that-fits-an-electrician-services-community-funding-concept-and-avoids-a-blue-purple-dominant-palette",
-      "title": "Apply a cohesive, creative visual theme across the landing page (colors, typography, spacing, section styling) that fits an “electrician services + community funding” concept and avoids a blue/purple-dominant palette.",
-      "reqIds": [
-        "REQ-5"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-update-the-global-tailwind-shadcn-theme-tokens-to-use-a-monochrome-white-black-gray-palette-replacing-the-current-amber-orange-electrician-palette-for-both-light-mode-and-dark-mode",
-      "title": "Update the global Tailwind/Shadcn theme tokens to use a monochrome (white/black/gray) palette, replacing the current amber/orange electrician palette for both light mode and dark mode.",
-      "reqIds": [
-        "REQ-6"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-refactor-landing-page-component-styling-to-remove-amber-orange-specific-tailwind-classes-and-gradients-replacing-them-with-a-consistent-black-white-gray-visual-treatment-while-keeping-the-existing-layout-sections-and-content-unchanged",
-      "title": "Refactor landing page component styling to remove amber/orange-specific Tailwind classes and gradients, replacing them with a consistent black/white/gray visual treatment while keeping the existing layout, sections, and content unchanged.",
-      "reqIds": [
-        "REQ-7"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-the-uploaded-electrobeez-logo-image-as-the-company-logo-in-the-top-navigation-header-and-also-display-the-same-logo-in-other-sections-of-the-landing-page-hero-and-footer",
-      "title": "Add the uploaded ElectroBeez logo image as the company logo in the top navigation/header and also display the same logo in other sections of the landing page (hero and footer).",
-      "reqIds": [
-        "REQ-8"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-replace-the-current-monochrome-theme-across-the-entire-site-with-a-professional-blue-and-white-color-palette-updating-both-light-mode-and-dark-mode-theme-tokens-and-refactoring-component-classes-as-needed-to-match-the-new-palette-consistently",
-      "title": "Replace the current monochrome theme across the entire site with a professional blue-and-white color palette, updating both light mode and dark mode theme tokens and refactoring component classes as needed to match the new palette consistently.",
-      "reqIds": [
-        "REQ-9"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-the-company-contact-details-email-electrobeezindia-gmail-com-phone-918638493216-to-appropriate-sections-of-the-landing-page-at-minimum-footer-optionally-header-with-clickable-mailto-and-tel-links",
-      "title": "Add the company contact details (email: electrobeezindia@gmail.com, phone: +918638493216) to appropriate sections of the landing page (at minimum: footer; optionally: header), with clickable mailto and tel links.",
-      "reqIds": [
-        "REQ-10"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-provide-a-project-documentation-page-that-guides-the-user-through-making-the-deployed-site-accessible-via-their-custom-domain-on-the-internet-computer-dns-records-boundary-node-custom-domain-configuration-including-placeholders-for-the-user-s-domain-name-and-deployed-canister-id",
-      "title": "Provide a project documentation page that guides the user through making the deployed site accessible via their custom domain on the Internet Computer (DNS records + boundary node/custom domain configuration), including placeholders for the user’s domain name and deployed canister ID.",
-      "reqIds": [
-        "REQ-11"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-trigger-a-fresh-redeploy-of-the-current-frontend-and-backend-canisters-so-the-live-site-becomes-reachable-again-addressing-the-reported-dns-probe-finished-nxdomain-when-opening-https-v3-your-project-caffeine-build",
-      "title": "Trigger a fresh redeploy of the current frontend and backend canisters so the live site becomes reachable again, addressing the reported DNS_PROBE_FINISHED_NXDOMAIN when opening https://v3-your-project.caffeine.build/.",
-      "reqIds": [
-        "REQ-12"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-the-provided-bank-donation-details-inside-the-existing-donation-section-donate-on-the-landing-page-displayed-as-a-clearly-labeled-block-alongside-the-existing-scan-pay-content",
-      "title": "Add the provided bank donation details inside the existing Donation section (#donate) on the landing page, displayed as a clearly labeled block alongside the existing Scan & Pay content.",
-      "reqIds": [
-        "REQ-13"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-a-directors-organization-leadership-list-containing-the-three-provided-names-together-in-the-last-footer-area-near-the-existing-quick-links-section",
-      "title": "Add a 'Directors' (organization leadership) list containing the three provided names together in the last/footer area near the existing 'Quick Links' section.",
-      "reqIds": [
-        "REQ-14"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-replace-any-incorrect-contact-phone-number-displayed-anywhere-on-the-site-with-the-correct-phone-number-918638493216-including-updating-any-visible-formatted-text-e-g-91-86384-93216-and-any-corresponding-clickable-tel-links-so-they-dial-918638493216",
-      "title": "Replace any incorrect contact phone number displayed anywhere on the site with the correct phone number \"+918638493216\", including updating any visible formatted text (e.g., \"+91 86384 93216\") and any corresponding clickable tel: links so they dial +918638493216.",
-      "reqIds": [
-        "REQ-15"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-publish-the-current-version-to-production-by-triggering-a-fresh-redeploy-of-the-frontend-and-backend-canisters-and-verify-the-live-site-becomes-reachable-again-at-https-v3-your-project-caffeine-build",
-      "title": "Publish the current version to production by triggering a fresh redeploy of the frontend and backend canisters, and verify the live site becomes reachable again at https://v3-your-project.caffeine.build/.",
-      "reqIds": [
-        "REQ-16"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-update-only-the-selected-element-at-xpath-html-1-body-1-div-1-div-1-section-6-div-1-div-1-div-1-a-2-div-2-p-2-so-that-its-visible-text-is-exactly-918638493216",
-      "title": "Update ONLY the selected element at XPath /html[1]/body[1]/div[1]/div[1]/section[6]/div[1]/div[1]/div[1]/a[2]/div[2]/p[2] so that its visible text is exactly \"+918638493216\".",
-      "reqIds": [
-        "REQ-17"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-publish-now-by-triggering-a-fresh-production-redeploy-of-the-current-frontend-and-backend-canisters-and-verify-the-site-becomes-reachable-at-https-v3-your-project-caffeine-build",
-      "title": "Publish now by triggering a fresh production redeploy of the current frontend and backend canisters, and verify the site becomes reachable at https://v3-your-project.caffeine.build/.",
-      "reqIds": [
-        "REQ-18"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-redesign-the-landing-page-as-a-full-layout-section-redesign-still-a-single-long-scrolling-page-while-keeping-the-existing-content-meaning-and-the-existing-section-anchors-usable-for-navigation-home-about-budget-benefits-donate",
-      "title": "Redesign the landing page as a full layout + section redesign (still a single long scrolling page), while keeping the existing content meaning and the existing section anchors usable for navigation: #home, #about, #budget, #benefits, #donate.",
-      "reqIds": [
-        "REQ-19"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-enforce-a-white-background-across-the-website-light-mode-and-ensure-the-overall-visual-styling-remains-futuristic-and-professional-with-a-clean-high-end-look",
-      "title": "Enforce a white background across the website (light mode) and ensure the overall visual styling remains futuristic and professional with a clean, high-end look.",
-      "reqIds": [
-        "REQ-20"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-constrain-the-color-system-so-that-all-non-white-accents-use-a-single-consistent-shade-of-blue-used-for-primary-actions-links-highlights-icons-borders-rings-and-avoid-introducing-additional-accent-hues",
-      "title": "Constrain the color system so that all non-white accents use a single consistent shade of blue (used for primary actions, links, highlights, icons, borders/rings), and avoid introducing additional accent hues.",
-      "reqIds": [
-        "REQ-21"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-subtle-ambient-motion-3d-style-effects-to-the-landing-page-design-using-lightweight-visual-techniques-e-g-glassmorphism-panels-soft-gradients-floating-shapes-gentle-animated-highlights-without-making-the-page-feel-distracting",
-      "title": "Add subtle ambient motion/3D-style effects to the landing page design, using lightweight visual techniques (e.g., glassmorphism panels, soft gradients, floating shapes, gentle animated highlights) without making the page feel distracting.",
-      "reqIds": [
-        "REQ-22"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-update-the-sticky-top-navigation-visual-treatment-to-match-the-futuristic-redesign-white-background-context-glassmorphism-on-scroll-while-preserving-existing-navigation-behavior-and-contact-cta-usability",
-      "title": "Update the sticky top navigation visual treatment to match the futuristic redesign (white background context + glassmorphism on scroll), while preserving existing navigation behavior and contact CTA usability.",
-      "reqIds": [
-        "REQ-23"
-      ],
-      "version": 1
     }
   ],
-  "new_feature_requests": [
-    {
-      "id": "AR-1",
-      "summary": "Create a simple funding/landing website explaining the on-demand electrician application project, including budget breakdown (5L) and benefits to the electrician community/ITI graduates/economy.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-2",
-      "summary": "Add a near-top donation section featuring a Scan & Pay QR image with heading and description about how donations benefit the community and the nation.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-4",
-      "summary": "Configure the website to be accessible via the user's custom domain (domain/DNS setup and deployment configuration).",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-5",
-      "summary": "Add the provided company logo image across the site (top navigation/header, hero, and footer sections).",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-6",
-      "summary": "Replace the current theme with a professional blue-and-white color palette across the entire site.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-7",
-      "summary": "Add company contact details: electrobeezindia@gmail.com (email) and +918638493216 (phone number) in appropriate sections (e.g., header/footer/contact area).",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-8",
-      "summary": "Add bank donation details (Punjab National Bank; A/C 0747010213936; IFSC PUNB0074720) within the donation section.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-9",
-      "summary": "Add a director/organization leadership list (Kamal Sing Bhumij, Jugensing Tokbi, David Gogoi) together in the last/footer section near the Quick Links area.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-10",
-      "summary": "Full futuristic/professional redesign: white background, single-shade blue for all non-white elements, subtle ambient motion/3D-style effects (gradients, glassmorphism, floating shapes), keep single long landing-page format.",
-      "reqIds": [],
-      "status": "pending"
-    }
-  ],
-  "gameProjectType": "none",
-  "projectName": "Funding landing website for on-demand electrician app (budget + benefits + QR donation section)",
+  "new_feature_requests": [],
+  "projectName": "Publish the app live (force fresh redeploy and verify production build)",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

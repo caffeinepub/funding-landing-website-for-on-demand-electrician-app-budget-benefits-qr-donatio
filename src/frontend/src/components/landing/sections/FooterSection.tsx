@@ -47,9 +47,17 @@ export default function FooterSection() {
               </ul>
               <div className="mt-6 space-y-2 text-sm text-foreground/60">
                 <p className="font-semibold text-foreground">Directors:</p>
-                <p>Kamal Sing Bhumij</p>
-                <p>Jugensing Tokbi</p>
-                <p>David Gogoi</p>
+                {CONTACT.directors.map((director) => (
+                  <div key={director.name}>
+                    <p className="text-foreground/80">{director.name}</p>
+                    <a 
+                      href={`tel:${director.phone.raw}`}
+                      className="text-foreground/60 hover:text-primary transition-colors"
+                    >
+                      {director.phone.display}
+                    </a>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -65,14 +73,22 @@ export default function FooterSection() {
                     {CONTACT.email}
                   </a>
                 </li>
-                <li className="flex items-center gap-3 text-sm">
-                  <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-4 h-4 text-primary" />
-                  </div>
-                  <a href={`tel:${CONTACT.phone.raw}`} className="text-foreground/60 hover:text-primary transition-colors">
-                    {CONTACT.phone.display}
-                  </a>
-                </li>
+                {CONTACT.directors.map((director) => (
+                  <li key={director.name} className="flex items-start gap-3 text-sm">
+                    <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Phone className="w-4 h-4 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-foreground/80 font-medium">{director.name}</p>
+                      <a 
+                        href={`tel:${director.phone.raw}`} 
+                        className="text-foreground/60 hover:text-primary transition-colors"
+                      >
+                        {director.phone.display}
+                      </a>
+                    </div>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>

@@ -2,18 +2,25 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Zap, Sparkles, TrendingUp } from 'lucide-react';
 
+// Required video ID for hero section
+const HERO_VIDEO_ID = 'LGxjck40R44';
+
 export default function HeroSection() {
   return (
     <section id="home" className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <div className="mb-8 animate-float">
-              <img 
-                src="/assets/generated/electrobeez-logo.dim_512x512.png" 
-                alt="ElectroBeez" 
-                className="w-32 h-32 md:w-48 md:h-48 mx-auto drop-shadow-2xl"
-              />
+            <div className="mb-8 max-w-3xl mx-auto">
+              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full rounded-2xl shadow-2xl"
+                  src={`https://www.youtube.com/embed/${HERO_VIDEO_ID}`}
+                  title="ElectroBeez Video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
             </div>
             
             <div className="inline-flex items-center gap-2 glass-surface px-6 py-3 rounded-full text-sm font-semibold mb-8 border border-primary/30 shadow-lg">

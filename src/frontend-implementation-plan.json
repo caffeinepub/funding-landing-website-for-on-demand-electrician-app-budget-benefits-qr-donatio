@@ -1,150 +1,41 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Futuristic single-page landing redesign (white + single-blue accents with subtle ambient motion)",
+  "title": "Force fresh production redeploy and verify live build marker",
   "requirements": [
     {
-      "id": "REQ-19",
-      "summary": "Fully redesign the single-page landing layout and all sections while keeping existing anchor IDs and content meaning.",
+      "id": "REQ-1",
+      "summary": "Update the redeploy marker timestamp and buildId version to force a fresh production redeploy and change the frontend bundle hash.",
       "acceptanceCriteria": [
-        "The site remains a single-page landing experience (no route-based multi-page navigation).",
-        "Top navigation links continue to scroll smoothly to the same anchor IDs: #home, #about, #budget, #benefits, #donate.",
-        "All existing core sections (Hero, Donation, About, Budget, Benefits, Footer) are still present, but their layout/visual structure is fully redesigned."
+        "`frontend/src/redeployMarker.ts` contains a new ISO-8601 timestamp value for `REDEPLOY_MARKER.timestamp`.",
+        "`frontend/src/redeployMarker.ts` contains an incremented `buildId` version (v10 -> v11) while preserving the existing `production-publish-v{N}-YYYYMMDD` style.",
+        "The change causes the frontend bundle hash to change (marker is imported by `frontend/src/App.tsx`)."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/landing/LandingPage.tsx",
+          "path": "frontend/src/redeployMarker.ts",
           "operation": "modify",
-          "description": "Refactor the landing page into a new futuristic long-scroll layout while preserving the exact section anchor IDs (#home, #about, #budget, #benefits, #donate) and keeping all existing content meaning/details (donation/bank details, contact details, directors list) intact; restructure sections into a modern layout and wire in any newly created section components. Use shadcn-ui surfaces (e.g., Card/Button) for consistent high-end styling. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/landing/sections/HeroSection.tsx",
-          "operation": "create",
-          "description": "Create a redesigned Hero section component (still renders as <section id=\"home\"> in LandingPage) with a futuristic/professional structure (e.g., improved hierarchy, feature highlights, CTA grouping) while keeping existing hero message meaning and keeping CTA links pointing to existing anchors. Use shadcn-ui components where appropriate. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/landing/sections/DonationSection.tsx",
-          "operation": "create",
-          "description": "Create a redesigned Donation section component (still renders as <section id=\"donate\">) that re-lays out the QR + bank transfer details into a more premium card/grid presentation without changing any donation/bank details content. Use shadcn-ui Card/Button for surfaces and CTAs. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/landing/sections/AboutSection.tsx",
-          "operation": "create",
-          "description": "Create a redesigned About section component (still renders as <section id=\"about\">) with a modern split layout and improved information architecture while preserving existing meaning and bullet content. Use shadcn-ui Card for feature panels. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/landing/sections/BudgetSection.tsx",
-          "operation": "create",
-          "description": "Create a redesigned Budget section component (still renders as <section id=\"budget\">) with an updated futuristic layout (e.g., structured breakdown cards + total callout) while preserving all budget values and text meaning. Use shadcn-ui Card/Button. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/landing/sections/BenefitsSection.tsx",
-          "operation": "create",
-          "description": "Create a redesigned Benefits section component (still renders as <section id=\"benefits\">) with a premium grid and improved micro-interactions while preserving the same benefits content meaning. Use shadcn-ui Card for benefit tiles. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/landing/sections/FooterSection.tsx",
-          "operation": "create",
-          "description": "Create a redesigned Footer section component (no new routes) that keeps existing contact info and any existing footer content meaning, but updates layout/typography to match the new futuristic theme. Use shadcn-ui components if beneficial. Verify the component's usage instructions before implementing."
+          "description": "Set `REDEPLOY_MARKER.timestamp` to the current ISO-8601 timestamp at implementation time, and increment `REDEPLOY_MARKER.buildId` from `production-publish-v10-20260215` to `production-publish-v11-20260215` (preserving the `production-publish-v{N}-YYYYMMDD` pattern)."
         }
       ]
     },
     {
-      "id": "REQ-20",
-      "summary": "Enforce a white light-mode background and cohesive futuristic/professional styling across the landing page.",
+      "id": "REQ-2",
+      "summary": "Ensure the production build emits a clearly visible console log line that matches the updated redeploy marker values for post-deploy verification.",
       "acceptanceCriteria": [
-        "In light mode, the main page background renders as white (no tinted page-wide background fill).",
-        "Sections that use gradients do not remove the overall white-background feel (gradients must be subtle overlays, not solid tinted section fills).",
-        "Typography, spacing, and component styling look cohesive and intentionally 'futuristic/professional' across the entire page."
+        "After deployment completes, opening the deployed site and viewing the browser console shows a line in the format `[ElectroBeez Build] ID: ${REDEPLOY_MARKER.buildId} | Timestamp: ${REDEPLOY_MARKER.timestamp}`.",
+        "The logged `buildId` and `timestamp` values exactly match the updated values in `frontend/src/redeployMarker.ts`."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/index.css",
+          "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Adjust global theme variables and base styles so light mode reads as true white page background and a clean high-end look (ensure body/main background is white), and ensure any gradient usage is subtle overlay rather than solid tinted fills; keep typography/spacing cohesive across the page and avoid page-wide tinted backgrounds."
+          "description": "Adjust the build marker console log to use a non-debug level (e.g., `console.info`) while preserving the exact message format `[ElectroBeez Build] ID: ${REDEPLOY_MARKER.buildId} | Timestamp: ${REDEPLOY_MARKER.timestamp}` so it is reliably visible during production verification."
         },
         {
-          "path": "frontend/src/components/landing/LandingPage.tsx",
+          "path": "frontend/DEPLOYMENT_TROUBLESHOOTING.md",
           "operation": "modify",
-          "description": "Update section background treatments to maintain an overall white-background feel (prefer subtle overlays, borders, and shadow depth over large tinted fills) while keeping the page futuristic/professional and readable; ensure all user-facing text remains English."
-        }
-      ]
-    },
-    {
-      "id": "REQ-21",
-      "summary": "Constrain accents to a single consistent blue shade (neutrals + one blue) across all interactive and highlight styling.",
-      "acceptanceCriteria": [
-        "Primary CTAs, interactive states (hover/focus), and key highlights use one consistent blue shade (no multiple different blues for accents).",
-        "No new accent color families (e.g., green/purple/orange) are introduced for decorative emphasis; neutrals + the single blue are used.",
-        "Theme tokens in the Tailwind/Shadcn system remain consistent with the single-blue constraint (primary/ring/accent usage does not drift into other hues)."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/index.css",
-          "operation": "modify",
-          "description": "Rework light-mode (and keep dark-mode coherent) color variables so the design uses neutrals for secondary/muted/accent surfaces and reserves a single consistent blue for primary/ring/links/highlights; remove or neutralize any extra accent hues so the only non-neutral accent family is the single blue."
-        },
-        {
-          "path": "frontend/src/components/landing/SectionNav.tsx",
-          "operation": "modify",
-          "description": "Update nav link hover/focus/active styles to comply with the single-blue accent constraint (use the same primary blue for emphasis and neutral surfaces for backgrounds), avoiding introducing additional accent hues; keep existing smooth-scroll behavior unchanged. Use shadcn-ui Button styling consistently for the CTA. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/landing/LandingPage.tsx",
-          "operation": "modify",
-          "description": "Audit all section highlights (icons, borders, rings, key numbers, and CTAs) to ensure they use the same single blue for accents and neutrals for everything else; avoid introducing additional accent color families. Use shadcn-ui Card/Button variants consistently. Verify the component's usage instructions before implementing."
-        }
-      ]
-    },
-    {
-      "id": "REQ-22",
-      "summary": "Add subtle ambient motion and glass/3D-style effects with reduced-motion support.",
-      "acceptanceCriteria": [
-        "At least 2–3 distinct ambient motion elements are present (e.g., slowly floating blurred shapes, subtle animated gradient sheen, gentle hover micro-interactions).",
-        "Glassmorphism is used intentionally on key surfaces (e.g., nav on scroll, hero/donation card treatments) via translucency + blur, while keeping readability high.",
-        "Animations respect accessibility: if the user has reduced-motion enabled, motion effects are reduced/disabled (no continuously moving elements)."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/tailwind.config.js",
-          "operation": "modify",
-          "description": "Add/extend lightweight keyframes/animations needed for ambient motion (e.g., slow float, subtle gradient shimmer, gentle pulse) and ensure they can be paired with Tailwind motion-reduce utilities for accessibility."
-        },
-        {
-          "path": "frontend/src/index.css",
-          "operation": "modify",
-          "description": "Add global CSS support for ambient effects and accessibility (e.g., helper classes for glass surfaces and animated gradient sheen, and explicit prefers-reduced-motion overrides to disable continuous animations when reduced-motion is enabled)."
-        },
-        {
-          "path": "frontend/src/components/landing/AmbientBackground.tsx",
-          "operation": "create",
-          "description": "Create a lightweight ambient background component that renders subtle floating/blurred shapes and/or a soft animated gradient overlay behind key sections; ensure effects are non-distracting and reduced/disabled under reduced-motion. Wire this component into the landing page (no new routes)."
-        },
-        {
-          "path": "frontend/src/components/landing/LandingPage.tsx",
-          "operation": "modify",
-          "description": "Integrate AmbientBackground and apply glassmorphism/3D-style treatments to key surfaces (e.g., hero overlay panels, donation card styling) and add gentle hover micro-interactions to cards/buttons while maintaining readability and reduced-motion compliance. Use shadcn-ui Card/Button as the base surfaces. Verify the component's usage instructions before implementing."
-        }
-      ]
-    },
-    {
-      "id": "REQ-23",
-      "summary": "Redesign the sticky top navigation with a futuristic glassmorphism scrolled state while preserving behavior and mobile interactions.",
-      "acceptanceCriteria": [
-        "The nav remains fixed at the top and continues to change style on scroll as it does now (scrolled vs not scrolled state).",
-        "The scrolled state uses a futuristic/glass-like style (translucent + blur), consistent with the single-blue accent constraint.",
-        "Desktop and mobile menu interactions still work (open/close, smooth scroll to anchors, Donate/Support button scrolls to #donate)."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/landing/SectionNav.tsx",
-          "operation": "modify",
-          "description": "Update the visual design of the sticky nav to match the new futuristic theme: keep fixed positioning and existing scroll-state behavior, implement a glass-like scrolled state (translucent white + blur + subtle border/shadow) that uses only the single blue for accents; ensure desktop/mobile menus and smooth-scroll interactions remain working. Use shadcn-ui Button for the CTA. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/index.css",
-          "operation": "modify",
-          "description": "Add or refine shared styles (tokens/classes) to support nav glassmorphism (e.g., translucent surfaces, subtle border/ring treatment) in a way consistent with the white background and single-blue accent constraint."
+          "description": "Update the verification instructions (without adding new product features) to explicitly reference checking the browser console for the exact `[ElectroBeez Build] ID: ... | Timestamp: ...` line and matching it to `frontend/src/redeployMarker.ts` after publishing the latest production build."
         }
       ]
     }
